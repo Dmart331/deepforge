@@ -2,6 +2,7 @@
 /*jshint browser: true*/
 
 define([
+    'deepforge/Constants',
     'widgets/EasyDAG/AddNodeDialog',
     'widgets/EasyDAG/EasyDAGWidget',
     'deepforge/viz/PipelineControl',
@@ -13,6 +14,7 @@ define([
     'underscore',
     'css!./styles/PipelineEditorWidget.css'
 ], function (
+    CONSTANTS,
     AddNodeDialog,
     EasyDAGWidget,
     PipelineControl,
@@ -339,9 +341,9 @@ define([
 
     ////////////////////////// Action Overrides //////////////////////////
     PipelineEditorWidget.prototype.selectTargetFor = function(itemId) {
-        // If it is an 'ArtifactLoader', then we will need to add 'upload artifact'
+        // If it is an input operation, then we will need to add 'upload artifact'
         // options
-        if (this.items[itemId].desc.baseName === 'ArtifactLoader') {
+        if (this.items[itemId].desc.baseName === CONSTANTS.OP.INPUT) {
             this.selectTargetForLoader.apply(this, arguments);
         } else {
             return EasyDAGWidget.prototype.selectTargetFor.apply(this, arguments);
