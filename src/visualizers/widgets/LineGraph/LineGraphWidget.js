@@ -48,6 +48,7 @@ define([
                     .axisLabel(this.options.xAxis);
             }
 
+            chart.yAxis.tickFormat(d3.format('.02f'));
             if (this.options.yAxis) {
                 chart.yAxis
                     .axisLabel(this.options.yAxis);
@@ -68,7 +69,9 @@ define([
     };
 
     LineGraphWidget.prototype.getData = function () {
-        return Object.keys(this.lineData).map(id => this.lineData[id]);
+        return Object.keys(this.lineData)
+            .map(id => this.lineData[id])
+            .filter(data => data.values.length !== 0);  // hide empty lines
     };
 
     // Adding/Removing/Updating items
