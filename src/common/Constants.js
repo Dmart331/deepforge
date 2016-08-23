@@ -16,7 +16,7 @@ define({
 
     // Operation types
     OP: {
-        INPUT: 'ArtifactLoader',
-        OUTPUT: 'Save'
+        INPUT: 'Input',
+        OUTPUT: 'Output'
     }
 });
